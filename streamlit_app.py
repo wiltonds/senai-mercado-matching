@@ -15,15 +15,13 @@ import faiss
 import joblib
 import streamlit as st
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(BASE_DIR, "src"))
-sys.path.insert(0, os.path.join(BASE_DIR, "data"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, BASE_DIR)
 
 from matching import build_vectors, search  # noqa: E402
 from courses_senai_demo import SENAI_COURSES  # noqa: E402
 from vagas_mercado_demo import VAGAS_MERCADO  # noqa: E402
-
-MODELS_DIR = os.path.join(BASE_DIR, "models")
+MODELS_DIR = BASE_DIR
 
 st.set_page_config(page_title="Matching Curso x Mercado — SENAI", page_icon="🎓", layout="centered")
 
