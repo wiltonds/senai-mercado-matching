@@ -1,0 +1,212 @@
+[
+  {
+    "vaga_id": "V001",
+    "vaga_titulo": "Desenvolvedor(a) Full Stack Júnior",
+    "matches": [
+      {
+        "curso": "Técnico em Desenvolvimento de Sistemas",
+        "codigo": "TI-001",
+        "similaridade": 0.4744485914707184
+      },
+      {
+        "curso": "Análise de Dados e Automação de Processos",
+        "codigo": "TI-003",
+        "similaridade": 0.07450126111507416
+      },
+      {
+        "curso": "Técnico em Edificações",
+        "codigo": "CIV-001",
+        "similaridade": 0.04672353342175484
+      }
+    ]
+  },
+  {
+    "vaga_id": "V002",
+    "vaga_titulo": "Analista de Suporte de TI",
+    "matches": [
+      {
+        "curso": "Suporte e Infraestrutura de Redes",
+        "codigo": "TI-002",
+        "similaridade": 0.4077596068382263
+      },
+      {
+        "curso": "Técnico em Administração e Gestão Empresarial",
+        "codigo": "GES-001",
+        "similaridade": 0.07461567223072052
+      },
+      {
+        "curso": "Técnico em Eletromecânica",
+        "codigo": "MEC-001",
+        "similaridade": 0.06828725337982178
+      }
+    ]
+  },
+  {
+    "vaga_id": "V003",
+    "vaga_titulo": "Analista de Dados Júnior",
+    "matches": [
+      {
+        "curso": "Técnico em Administração e Gestão Empresarial",
+        "codigo": "GES-001",
+        "similaridade": 0.22930745780467987
+      },
+      {
+        "curso": "Análise de Dados e Automação de Processos",
+        "codigo": "TI-003",
+        "similaridade": 0.14573414623737335
+      },
+      {
+        "curso": "Técnico em Desenvolvimento de Sistemas",
+        "codigo": "TI-001",
+        "similaridade": 0.07029633969068527
+      }
+    ]
+  },
+  {
+    "vaga_id": "V004",
+    "vaga_titulo": "Técnico de Segurança do Trabalho",
+    "matches": [
+      {
+        "curso": "Técnico em Segurança do Trabalho",
+        "codigo": "SST-001",
+        "similaridade": 0.46621444821357727
+      },
+      {
+        "curso": "Gestão de Riscos Ocupacionais em Pequenas Empresas",
+        "codigo": "SST-002",
+        "similaridade": 0.21498289704322815
+      },
+      {
+        "curso": "Técnico em Logística",
+        "codigo": "LOG-001",
+        "similaridade": 0.044982388615608215
+      }
+    ]
+  },
+  {
+    "vaga_id": "V005",
+    "vaga_titulo": "Consultor de Adequação Normativa para Pequenas Empresas",
+    "matches": [
+      {
+        "curso": "Gestão de Riscos Ocupacionais em Pequenas Empresas",
+        "codigo": "SST-002",
+        "similaridade": 0.6303249597549438
+      },
+      {
+        "curso": "Técnico em Administração e Gestão Empresarial",
+        "codigo": "GES-001",
+        "similaridade": 0.0800737664103508
+      },
+      {
+        "curso": "Manutenção de Sistemas Eletroeletrônicos",
+        "codigo": "AUT-002",
+        "similaridade": 0.042495861649513245
+      }
+    ]
+  },
+  {
+    "vaga_id": "V006",
+    "vaga_titulo": "Técnico de Automação e Instrumentação",
+    "matches": [
+      {
+        "curso": "Técnico em Automação Industrial",
+        "codigo": "AUT-001",
+        "similaridade": 0.6097714900970459
+      },
+      {
+        "curso": "Técnico em Eletromecânica",
+        "codigo": "MEC-001",
+        "similaridade": 0.08350624144077301
+      },
+      {
+        "curso": "Manutenção de Sistemas Eletroeletrônicos",
+        "codigo": "AUT-002",
+        "similaridade": 0.06210330128669739
+      }
+    ]
+  },
+  {
+    "vaga_id": "V007",
+    "vaga_titulo": "Técnico de Manutenção Industrial",
+    "matches": [
+      {
+        "curso": "Manutenção de Sistemas Eletroeletrônicos",
+        "codigo": "AUT-002",
+        "similaridade": 0.5226892232894897
+      },
+      {
+        "curso": "Técnico em Eletromecânica",
+        "codigo": "MEC-001",
+        "similaridade": 0.12093435972929001
+      },
+      {
+        "curso": "Técnico em Automação Industrial",
+        "codigo": "AUT-001",
+        "similaridade": 0.08672542124986649
+      }
+    ]
+  },
+  {
+    "vaga_id": "V008",
+    "vaga_titulo": "Auxiliar de Logística e Estoque",
+    "matches": [
+      {
+        "curso": "Técnico em Logística",
+        "codigo": "LOG-001",
+        "similaridade": 0.4867599904537201
+      },
+      {
+        "curso": "Técnico em Segurança do Trabalho",
+        "codigo": "SST-001",
+        "similaridade": 0.08304879814386368
+      },
+      {
+        "curso": "Técnico em Edificações",
+        "codigo": "CIV-001",
+        "similaridade": 0.058746714144945145
+      }
+    ]
+  },
+  {
+    "vaga_id": "V009",
+    "vaga_titulo": "Assistente Administrativo",
+    "matches": [
+      {
+        "curso": "Técnico em Administração e Gestão Empresarial",
+        "codigo": "GES-001",
+        "similaridade": 0.45439475774765015
+      },
+      {
+        "curso": "Análise de Dados e Automação de Processos",
+        "codigo": "TI-003",
+        "similaridade": 0.05033260956406593
+      },
+      {
+        "curso": "Suporte e Infraestrutura de Redes",
+        "codigo": "TI-002",
+        "similaridade": 0.0
+      }
+    ]
+  },
+  {
+    "vaga_id": "V010",
+    "vaga_titulo": "Técnico em Controle de Qualidade Alimentar",
+    "matches": [
+      {
+        "curso": "Técnico em Alimentos",
+        "codigo": "ALI-001",
+        "similaridade": 0.7718619108200073
+      },
+      {
+        "curso": "Técnico em Edificações",
+        "codigo": "CIV-001",
+        "similaridade": 0.11817093193531036
+      },
+      {
+        "curso": "Técnico em Eletromecânica",
+        "codigo": "MEC-001",
+        "similaridade": 0.10790190100669861
+      }
+    ]
+  }
+]
