@@ -1,138 +1,162 @@
-# 🎓 Busca Semântica: Cursos SENAI × Vagas de Mercado
+# SENAI Market Matching — Semantic Search for Skills & Courses
 
-Prova de conceito de um **motor de matching semântico** entre a demanda do
-mercado de trabalho (vagas) e a oferta de cursos técnicos (SENAI), usando
-banco vetorial (**FAISS**) — a mesma infraestrutura usada em pipelines de
-RAG, aplicada aqui a um problema real de inteligência de mercado.
+> Applied data intelligence system that matches **labor-market demand** with **technical education supply** using text representation, vector search and semantic similarity.
 
-Projeto desenvolvido como extensão prática do trabalho de Inteligência de
-Mercado na FIEA/SENAI-AL, e como preparação técnica para a bolsa de Inovação
-**ICT ITAÚ / Inova Talentos**.
+**Portfolio focus:** Semantic Search · Information Retrieval · Vector Search · Machine Learning · Learning Analytics · Decision Support
+
+![SENAI Market Matching — Semantic Architecture](./docs/semantic-matching-architecture.svg)
 
 ---
 
-## O problema real que este projeto resolve
+## Business problem
 
-A análise de CAGED cruzada com o portfólio de cursos identifica gaps por
-**categoria oficial de ocupação (CBO)** — uma classificação rígida. Descrições
-de vaga em texto livre, porém, usam palavras diferentes para pedir
-competências parecidas às ensinadas em um curso já existente, e a
-classificação oficial nem sempre captura essa correspondência.
+Labor-market data and education portfolios often describe similar skills using different terminology.
 
-Este protótipo testa uma abordagem alternativa: representar a **ementa de
-cada curso** e a **descrição de cada vaga** como vetores, e buscar
-correspondências por similaridade — encontrando conexões que a categorização
-oficial poderia não capturar.
+A vacancy may ask for **BI, indicators and dashboards**, while a course curriculum may describe the same capability using different words. Relying only on rigid occupational categories can therefore miss useful relationships between market demand and available training.
 
----
+This project explores a data-driven alternative: represent vacancy descriptions and course curricula as vectors and retrieve the most similar courses for each market opportunity.
 
-## ⚠️ Transparência sobre os dados e a metodologia
+## Solution
 
-**Dados:** as ementas de curso (`data/courses_senai_demo.py`) e as descrições
-de vaga (`data/vagas_mercado_demo.py`) são **exemplos ilustrativos**, escritos
-para validar a arquitetura — não são o catálogo oficial da SENAI-AL nem vagas
-reais coletadas de CAGED/Novo CAGED ou portais de emprego. As categorias
-refletem áreas reais de atuação do Sistema S (TI, Segurança do Trabalho,
-Automação Industrial etc.), mas o texto específico de cada ementa/vaga é de
-demonstração.
+The pipeline converts unstructured text into searchable representations and returns the **top-k courses most similar to a vacancy**.
 
-**Vetorização:** o ideal seria usar *embeddings* densos de um modelo de
-linguagem pré-treinado (ex.: Sentence-BERT multilíngue), que captam sinônimos
-e significado além da palavra exata. Este protótipo usa **TF-IDF**, por
-restrição de acesso a modelos de embeddings pré-treinados no ambiente em que
-foi construído (sem acesso ao Hugging Face Hub). A infraestrutura de busca
-vetorial (**FAISS**) é real e idêntica à de produção — trocar TF-IDF por
-embeddings de um `SentenceTransformer` é uma mudança de poucas linhas em
-`src/matching.py::build_vectors()`, sem alterar o restante do pipeline.
-
----
-
-## Resultado observado (honesto, incluindo os erros)
-
-Rodando `python src/build_index.py` com os dados de exemplo, o TF-IDF acertou
-o curso correspondente como primeiro colocado em 9 de 10 vagas de teste. O
-único erro relevante:
-
-> **Vaga "Analista de Dados Júnior"** → o modelo colocou em 1º lugar
-> "Administração e Gestão Empresarial", e só em 2º "Análise de Dados e
-> Automação de Processos" — porque a vaga usa a palavra "indicadores" e a
-> ementa usa "dashboards"/"BI", termos que o TF-IDF não reconhece como
-> sinônimos.
-
-Esse erro é o argumento mais concreto para embeddings: um modelo como
-Sentence-BERT captaria que "indicadores", "dashboards" e "BI" ocupam o mesmo
-espaço semântico, mesmo sem repetir a palavra exata — o TF-IDF não consegue.
-
----
-
-## Arquitetura
-
-```
-descrição da vaga (texto)
-        │
-        ▼
-  pré-processamento (limpeza, tokenização, stopwords)
-        │
-        ▼
-  vetorização (TF-IDF — ou embeddings, no upgrade futuro)
-        │
-        ▼
-  busca no índice FAISS (similaridade de cosseno)
-        │
-        ▼
-  top-k cursos mais similares, com score de similaridade
+```text
+Job description
+      ↓
+Text preprocessing
+      ↓
+TF-IDF representation
+      ↓
+Vector index
+      ↓
+FAISS similarity search
+      ↓
+Top-k course matches
+      ↓
+Market / education decision support
 ```
 
-## Estrutura do repositório
+The architecture is intentionally designed so the representation layer can evolve from TF-IDF to dense multilingual embeddings without changing the overall retrieval workflow.
 
+## Data transparency
+
+The repository uses **illustrative demo datasets** for both course curricula and job descriptions.
+
+They are not presented as the official SENAI-AL course catalog or as a production extraction of CAGED, Novo CAGED or employment portals.
+
+This distinction is important for a public portfolio: the repository demonstrates the **method and engineering architecture**, while sensitive or restricted production datasets remain outside the public codebase.
+
+## Methodology
+
+### 1. Text preprocessing
+
+Vacancy and curriculum text is normalized and prepared for vector representation, including Portuguese-language preprocessing.
+
+### 2. Vector representation
+
+The current implementation uses **TF-IDF**. This provides a transparent baseline for lexical similarity.
+
+A production-oriented evolution would use multilingual Sentence-BERT or another embedding model to capture semantic relationships between terms that are not lexically identical.
+
+### 3. Vector retrieval
+
+**FAISS** provides the similarity-search infrastructure.
+
+The retrieval layer returns the highest-scoring course candidates for each vacancy.
+
+### 4. Evaluation
+
+On the included demo test set, the current TF-IDF implementation placed the corresponding course first for **9 of 10 test vacancies**.
+
+The remaining error is especially useful analytically: a data analyst vacancy was ranked against an administration course before the intended data-analysis course because the model did not understand the semantic relationship between terms such as **indicators, dashboards and BI**.
+
+That failure is treated as evidence for the next methodological improvement rather than hidden from the portfolio.
+
+## Architecture
+
+| Layer | Technology / approach |
+|---|---|
+| Input | Job descriptions + course curricula |
+| Preprocessing | Python text normalization / Portuguese stopwords |
+| Representation | TF-IDF |
+| Retrieval | FAISS |
+| Ranking | Similarity score + top-k retrieval |
+| Interface | Streamlit |
+| Future semantic layer | Sentence-BERT / dense embeddings |
+
+## Why this project matters
+
+This project demonstrates a core pattern behind modern **RAG and semantic-search systems**:
+
+```text
+Unstructured text
+      ↓
+Representation
+      ↓
+Vector index
+      ↓
+Similarity retrieval
+      ↓
+Ranked evidence
+      ↓
+Human decision
 ```
+
+The same architecture can be extended to:
+
+- course-to-job matching;
+- skill-gap analysis;
+- curriculum recommendation;
+- workforce intelligence;
+- RAG retrieval;
+- talent and learning analytics;
+- market-to-portfolio matching.
+
+## Repository structure
+
+```text
 senai-mercado-matching/
 ├── app/
-│   └── streamlit_app.py        # Interface web de busca
+│   └── streamlit_app.py
 ├── src/
-│   ├── preprocessing.py        # Limpeza, tokenização, stopwords (PT)
-│   ├── matching.py             # Vetorização (TF-IDF) + índice FAISS + busca
-│   └── build_index.py          # Constrói o índice e roda o matching de teste
+│   ├── preprocessing.py
+│   ├── matching.py
+│   └── build_index.py
 ├── data/
-│   ├── courses_senai_demo.py   # Ementas ilustrativas de cursos
-│   └── vagas_mercado_demo.py   # Descrições ilustrativas de vagas
-├── models/                     # Índice FAISS + vectorizer (gerados)
+│   ├── courses_senai_demo.py
+│   └── vagas_mercado_demo.py
+├── models/
+├── docs/
+│   └── semantic-matching-architecture.svg
 ├── requirements.txt
 └── README.md
 ```
 
-## Como rodar localmente
+## Run locally
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
+source venv/bin/activate          # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 
-python src/build_index.py         # constrói o índice e imprime o matching de teste
+python src/build_index.py
 streamlit run app/streamlit_app.py
 ```
 
-## Deploy no Streamlit Community Cloud
-
-Mesmo processo do projeto de sentiment analysis: suba o repositório pro
-GitHub, conecte em [share.streamlit.io](https://share.streamlit.io), aponte
-para `app/streamlit_app.py`. Como o índice é pequeno (12 cursos), pode
-rodar `build_index.py` no próprio boot do app, ou commitar `/models`
-diretamente.
-
 ## Roadmap
 
-- [ ] Substituir dados ilustrativos pelas ementas reais do catálogo SENAI-AL
-      e por descrições reais de vagas (fonte a definir: portal de emprego
-      regional, parceiros, ou coleta manual)
-- [ ] Trocar TF-IDF por embeddings de Sentence-BERT multilíngue
-- [ ] Avaliar a qualidade da busca com métricas de recall@k / MRR, usando um
-      conjunto de pares vaga-curso validados manualmente como gabarito
-- [ ] Expandir para um assistente conversacional (RAG completo): em vez de só
-      listar cursos similares, gerar uma recomendação textual explicando por
-      que aquele curso atende à vaga
+- Replace demo data with an authorized production dataset.
+- Evaluate retrieval with **Recall@k** and **MRR** using manually validated vacancy-course pairs.
+- Replace TF-IDF with multilingual dense embeddings.
+- Compare lexical retrieval against semantic retrieval.
+- Add explainable matching signals.
+- Extend the retrieval layer into a conversational RAG assistant.
 
-## Autor
+## Scope and limitations
 
-Wilton Costa — Analista de Inteligência de Mercado (FIEA/SENAI-AL) | Mestrando
-em Management com ênfase em Data Science (Faulkner University).
+The current implementation is a portfolio prototype. The 9/10 demo result should not be interpreted as production model performance. A real deployment would require representative data, a validated relevance benchmark, monitoring and evaluation across occupations, sectors and time periods.
+
+---
+
+**Author:** Wilton Costa  
+**Focus:** Data Science · Machine Learning · Applied AI · Learning & Market Analytics
