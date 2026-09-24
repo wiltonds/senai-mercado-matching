@@ -6,6 +6,19 @@
 
 ![Portfolio architecture](./docs/portfolio-hero.svg)
 
+## Application Demo
+
+![Market matching demo](./docs/screenshots/market-matching-demo.svg)
+
+> **Demo mode:** synthetic/illustrative data is used where production data or infrastructure is not appropriate for a public portfolio.
+
+Run locally:
+
+```bash
+streamlit run demo_app.py
+```
+
+
 
 ![SENAI Market Matching — Semantic Architecture](./docs/semantic-matching-architecture.svg)
 
