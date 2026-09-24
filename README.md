@@ -4,6 +4,9 @@
 
 **Portfolio focus:** Semantic Search · Information Retrieval · Vector Search · Machine Learning · Learning Analytics · Decision Support
 
+![Portfolio architecture](./docs/portfolio-hero.svg)
+
+
 ![SENAI Market Matching — Semantic Architecture](./docs/semantic-matching-architecture.svg)
 
 ---
