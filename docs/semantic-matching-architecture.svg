@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820">
+<rect width="1500" height="820" fill="#08111f"/>
+<text x="75" y="68" fill="#ffffff" font-family="Arial,sans-serif" font-size="34" font-weight="700">SENAI Mercado Matching</text>
+<text x="75" y="108" fill="#a9b8cc" font-family="Arial,sans-serif" font-size="19">Semantic matching between labor-market demand and technical education supply</text>
+
+<g font-family="Arial,sans-serif">
+<rect x="75" y="175" width="300" height="190" rx="20" fill="#14243b" stroke="#5b9cff" stroke-width="2"/>
+<text x="225" y="215" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">Market Demand</text>
+<text x="225" y="255" text-anchor="middle" fill="#b9c7da" font-size="17">Job descriptions</text>
+<text x="225" y="285" text-anchor="middle" fill="#b9c7da" font-size="17">Skills &amp; requirements</text>
+<text x="225" y="315" text-anchor="middle" fill="#b9c7da" font-size="17">Occupational signals</text>
+<text x="225" y="345" text-anchor="middle" fill="#7dd3fc" font-size="15">Unstructured text</text>
+
+<rect x="1125" y="175" width="300" height="190" rx="20" fill="#14243b" stroke="#34d399" stroke-width="2"/>
+<text x="1275" y="215" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">Education Supply</text>
+<text x="1275" y="255" text-anchor="middle" fill="#b9c7da" font-size="17">Technical courses</text>
+<text x="1275" y="285" text-anchor="middle" fill="#b9c7da" font-size="17">Curriculum / skills</text>
+<text x="1275" y="315" text-anchor="middle" fill="#b9c7da" font-size="17">Training portfolio</text>
+<text x="1275" y="345" text-anchor="middle" fill="#6ee7b7" font-size="15">Structured content</text>
+
+<rect x="520" y="155" width="460" height="235" rx="22" fill="#101d31" stroke="#a78bfa" stroke-width="2"/>
+<text x="750" y="200" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">Semantic Matching Engine</text>
+<text x="750" y="240" text-anchor="middle" fill="#c5bdf4" font-size="17">Text preprocessing</text>
+<text x="750" y="270" text-anchor="middle" fill="#c5bdf4" font-size="17">TF-IDF / Embeddings</text>
+<text x="750" y="300" text-anchor="middle" fill="#c5bdf4" font-size="17">Vector representation</text>
+<text x="750" y="330" text-anchor="middle" fill="#c5bdf4" font-size="17">FAISS similarity search</text>
+<text x="750" y="360" text-anchor="middle" fill="#c5bdf4" font-size="17">Top-k recommendations</text>
+
+<path d="M375 270 H520" stroke="#7f91aa" stroke-width="4" marker-end="url(#a)"/>
+<path d="M1125 270 H980" stroke="#7f91aa" stroke-width="4" marker-end="url(#a)"/>
+
+<rect x="250" y="500" width="1000" height="175" rx="24" fill="#102a29" stroke="#34d399" stroke-width="2"/>
+<text x="750" y="545" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700">Decision Support</text>
+<text x="750" y="582" text-anchor="middle" fill="#b8d8cf" font-size="17">Ranked courses for each market opportunity</text>
+<text x="750" y="613" text-anchor="middle" fill="#b8d8cf" font-size="17">Skill-gap signals · portfolio opportunities · explainable similarity scores</text>
+<text x="750" y="644" text-anchor="middle" fill="#7ee7c4" font-size="16">From labor-market data → semantic intelligence → education strategy</text>
+
+<path d="M750 390 V500" stroke="#7f91aa" stroke-width="4" marker-end="url(#a)"/>
+
+<text x="75" y="735" fill="#ffffff" font-family="Arial,sans-serif" font-size="19" font-weight="700">Portfolio architecture</text>
+<text x="75" y="770" fill="#a9b8cc" font-family="Arial,sans-serif" font-size="17">Demand → Representation → Vector Search → Matching → Recommendation</text>
+<text x="75" y="798" fill="#6f8199" font-family="Arial,sans-serif" font-size="14">Demo datasets are illustrative; production data should be evaluated with validated relevance labels.</text>
+</g>
+<defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#7f91aa"/></marker></defs>
+</svg>
